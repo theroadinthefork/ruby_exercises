@@ -2,6 +2,7 @@ def bubble_sort(list)
   temp_list = list
   final_list = []
 
+  until temp_list.length  == 0
     temp_list.each_with_index do |item, index|
       if temp_list[index+1].nil?
         break
@@ -12,11 +13,14 @@ def bubble_sort(list)
       else
         next
       end
-    final_list.unshift(temp_list[-1])
-    temp_list.drop
     end
 
-  temp_list
+    final_list.unshift(temp_list[-1])
+    temp_list.pop
+
+  end
+
+  final_list
 end
 
 
