@@ -7,9 +7,7 @@ def bubble_sort(list)
       if temp_list[index+1].nil?
         break
       elsif item > temp_list[index+1]
-        temp = item
-        temp_list[index] = temp_list[index+1]
-        temp_list[index+1] = temp
+        temp_list[index], temp_list[index+1] = temp_list[index+1], temp_list[index]
       else
         next
       end
