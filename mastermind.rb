@@ -9,11 +9,11 @@ class Mastermind
       case gameMode
         when "b"
           @code = Array.new(4) {rand(1..6)}
-        puts "\nYou've chosen to be the codebreaker. A code containing 4 digits, each digit between 1 and 6 has been generated! You have #{@guessesLeft} guesses. Good luck!"
+        puts "\nYou've chosen to be the codebreaker. A code containing 4 digits been generated! Each digit is a number between 1 and 6. You have #{@guessesLeft} guesses. Good luck!"
           gameStateCodebreaker
           break
         when "m"
-          puts "\nYou've chosen to be the codemaker. Enter a 4 digit code, each digit must be between 1 and 6:"
+          puts "\nYou've chosen to be the codemaker. Enter a 4 digit code, where each digit must be between 1 and 6:"
         gameStateCodemaker
         else
           puts "Invalid input"
@@ -21,8 +21,6 @@ class Mastermind
     end 
   end
 
-
-  
   # Codemaker 
   def gameStateCodemaker
     # Get a valid code from user
@@ -56,9 +54,6 @@ class Mastermind
     restart
   end
 
-
-
-
   # Restart the game
   def restart
     puts "---GAME OVER---"
@@ -74,11 +69,6 @@ class Mastermind
     end 
   end
 
-
-
-
-
-
   # Codebreaker 
   def gameStateCodebreaker
     until @guessesLeft == 0
@@ -90,7 +80,7 @@ class Mastermind
           puts "\nCongrats! You broke the code."
           restart
         when guess.join.match(@validCodePattern).nil?
-          puts "\nOops, your guess is out of range! The code consists of 4 digits, each between 1 and 6 (inclusive)."
+          puts "\nOops, your guess is invalid! Your guess must be a 4 digit code, where each digit is between 1 and 6."
         next
         else
           potentiallyMisplaced = []
@@ -103,7 +93,7 @@ class Mastermind
               leftoverCode << @code[i]
             end
           end
-          puts "\n#{4-potentiallyMisplaced.length} digit(s) correct,"
+          puts "\n#{4-potentiallyMisplaced.length} digit(s) are correct, and"
 
           # check for wrong spots
           wrong = 0
@@ -113,7 +103,7 @@ class Mastermind
         leftoverCode.delete_at(leftoverCode.index(x))
             end
           end
-          puts "#{wrong} digit(s) in the wrong spot."
+          puts "#{wrong} digit(s) are in the wrong spot."
         end 
       @guessesLeft -= 1
       puts "#{@guessesLeft} guesses left."
@@ -125,5 +115,3 @@ class Mastermind
 end
 
 game = Mastermind.new
-
-    
